@@ -1,0 +1,37 @@
+{% extends 'base-site.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block css %}{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="{{ object.image.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-6">
+                <h4>{{ object.name|title }}</h4>
+                <div class="d-flex align-items-center my-4">
+                    <h4>Price: {{ object.price }}</h4>
+                    <h6 class="ml-auto">{{ object.posted_on|date }}</h6>
+                </div>
+                <p>{{ object.details }}</p>
+                <div class="d-flex align-items-center my-4">
+
+                    {% include 'product/snippets/cart_update.html' with product=object cart=cart %}
+
+                    <a href="#" class="btn btn-success ml-auto">Compirasoon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

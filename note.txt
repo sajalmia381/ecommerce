@@ -1,0 +1,33 @@
+                          Modules
+--------------------------------------------------
+1. Users
+  - 1. https://kirr.co/ygijli
+  - 2. https://kirr.co/
+  - 3. https://kirr.co/
+2. analytic Data
+  - https://kirr.co/mh9shf
+3. mail integration
+  - https://kirr.co/y&zkp9
+  mail chimp Account
+  - mailchimp.com or https://kirr.co/53um7w
+  - https://kirr.co/y7zkp9
+4. Production
+  - https://kirr.co/8mjnna
+  - https://kirr.co/vklau5 [ ssl\tls ]
+  - https://kirr.co/moo1b0 [ .gitignore ]
+5. Heroku Deploy
+  - https://kirr.co/fmj5xx
+6. Password Reset
+  - https://kirr.co/zm6ri8
+
+
+------------------------------------------------------------------
+
+
+	**** Important super User access ****
+New Default Admin Access Info = admin@mail.com  password = sa***m**
+
+# database Bump Data
+ - python manage.py dumpdata --format json --indent 4
+ - python manage.py dumpdata product --format json --indent 4 > product/fixtures/product.json
+ - python manage.py loaddata product/fixtures/product.json

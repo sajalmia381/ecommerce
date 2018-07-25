@@ -1,0 +1,21 @@
+<form class="form-group" action="{% if address_reuse_url %}{{ address_reuse_url}}{% else %}{% url 'account:login' %}{% endif %}" method="POST">{% csrf_token %}
+
+    {% if next_url %}
+    <input type="hidden" name="next" value="{{ next_url }}">
+    {% endif %}
+
+    {% if address_type %}
+    <input type='hidden' name='address_type' value='{{ address_type }}' />
+    {% endif %}
+
+    {% for address in qs %}
+    <label for="address-{{ address.id }}">
+        <input type="radio" id="address-{{ address.id }}" value="{{ address.id }}" name="shipping_address">
+        {{ address.address_1 }}
+    </label><br>
+    {% endfor %}
+
+    <div class="form-group">
+        <button class="btn btn-success" type="submit">Submit</button>
+    </div>
+</form>

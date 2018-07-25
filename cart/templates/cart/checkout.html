@@ -1,0 +1,97 @@
+{% extends 'base-site.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block css %}{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+
+{% if  not billing_profile %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h3 class="mb-4">Login</h3>
+                <hr>
+                {% include 'account/snippets/login_form.html' with next_url=request.build_absolute_uri  %}
+            </div>
+            <div class="col-12 col-md-6 text-right">
+                {% url 'account:registration-guest' as registration_guest_url %}
+                <h3 class="mb-4">Guest Registration</h3>
+                <hr>
+                <form class="form-group" action="{% if registration_guest_url %}{{ registration_guest_url }}{% else %}{% url 'account:login' %}{% endif %}" method="POST">{% csrf_token %}
+                        {{ guest_form }}
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">Registration</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+    <section>
+        <div class="container">
+    {% if not object.shipping_address  %}
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h3 class="mb-5">Shipping Address</h3>
+                    <hr>
+                    {% url 'address:address-form' as address_form_url %}
+                    {% include 'address/address-form.html' with form=address_form next_url=request.build_absolute_uri action_url=address_form_url address_type='shipping' %}
+                </div>
+                <div class="col-12 col-md-6">
+                    {% if qs_address %}
+                    {% url 'address:address-reuse' as address_reuse_url %}
+                    {% include 'address/snippets/address_type_form.html' with qs=qs_address next_url=request.build_absolute_uri action_url=address_reuse_url address_type='shipping' %}
+                    {% endif %}
+                </div>
+            </div>
+    {% elif not object.billing_address %}
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h3 class="mb-5">Billing Address</h3>
+                    <hr>
+                    {% url 'address:address-form' as address_form_url %}
+                    {% include 'address/address-form.html' with form=address_form next_url=request.build_absolute_uri action_url=address_form_url address_type='billing' %}
+                </div>
+                <div class="col-12 col-md-6">
+                    {% if qs_address %}
+                    {% url 'address:address-reuse' as address_reuse_url %}
+                    {% include 'address/snippets/address_type_form.html' with qs=qs_address next_url=request.build_absolute_uri action_url=address_reuse_url address_type='billing' %}
+                    {% endif %}
+                </div>
+            </div>
+    {% else %}
+            <div class="row">
+                <div class="col-10 offset-1 mb-5">
+                    <h3><strong>Products:</strong> {% for item in object.cart.Products.all %} {{ forloop.counter }}. {{item}}, {% endfor %}</h3>
+                    <h4><strong>Shipping Address:</strong> {{ object.shipping_address.get_address }}</h4>
+                    <h4><strong>Billing Address:</strong> {{ object.billing_address.get_address }}</h4>
+                </div>
+                <div class="col-12 col-md-6 offset-md-3">
+                    <!--<h2 class="mb-1">Order Id : {{ object.order_id }}</h2>-->
+                    <h5>Status: {{ object.status }}</h5>
+                    <div class="mr-3 mt-5">
+                        <h3>Shipping Total: <strong>{{ object.shipping_total }}</strong></h3>
+                        <h3>Grand Total: <strong>{{ object.total }}</strong></h3>
+
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-success mt-3">Checkout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+        </div>
+    </section>
+{% endif %}
+{% endblock %}
+
+{% block js %}{% endblock %}

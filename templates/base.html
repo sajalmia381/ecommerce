@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"> {% load static %}
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="keywords" content="MediaCenter, Template, eCommerce">
+        <meta name="robots" content="all">
+
+        <link rel="icon" href="{% static 'assets/images/favicon.png' %}">
+        <title>{% block title %} {% endblock %}</title>
+
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/jquery-confirm.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+        {% block css %}
+        <style>
+        .cart-remove-hidden-form{
+            display: none;
+        }    
+        </style>
+        {% endblock %}
+    </head>
+
+    <body class="home">
+
+        <div class="wrapper">
+            {% block header %}
+            {% endblock %}
+
+            {% block breadcrumb %}
+            {% endblock %}
+
+            {% block content %}
+            {% endblock %}
+
+            {% block footer %}
+            {% endblock %}
+        </div>
+
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-confirm.min.js' %}"></script>
+        <script src="{% static 'assets/js/ajax.csrf.js' %}"></script>
+        <script src="{% static 'assets/js/ajax.js' %}"></script>
+        <script src="{% static 'assets/js/scripts.js' %}"></script>
+        
+        <script>
+            $(document).ready(function () {
+                var loginForm = $('.login-form-ajax');
+
+                loginForm.submit(function (e) {
+                    e.preventDefault();
+                    var thisForm = $(this);
+                    var actionEndPoint = thisForm.attr('action'),
+                        method = thisForm.attr('method'),
+                        data = thisForm.serialize();
+                    $.ajax({
+                        url: actionEndPoint,
+                        method: method,
+                        data: data,
+                        success: function(data) {
+                            console.log(data)
+                            $.dialog({
+                                title: 'Successfully Login',
+                                // content: 'Simple modal!',
+                            });
+                        },
+                        error: function(errorData) {
+                            $.alert({
+                                title: 'An Error Occuired',
+                                content: 'Email or Password not Correct',
+                            });
+                            console.log(errorData)
+                        }
+                    })
+                });
+
+            });
+        </script>
+        {% block js %}{% endblock %}
+    </body>
+
+</html>

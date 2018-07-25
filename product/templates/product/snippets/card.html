@@ -1,0 +1,16 @@
+<div class="card">
+{% if instance.image %}
+<img class="card-img-top" src="{{ instance.image.url }}" alt="Card image cap">
+{% endif %}
+    <div class="card-body">
+        <a class="card-title" href="{{ instance.get_absolute_url }}"><h3>{{ instance.name|title }}</h3></a>
+        <p class="card-text mt-2 mb-4">{{ instance.details|truncatechars:44 }}</p>
+        <div class="d-flex align-items-center text-right">
+            <a href="{{ instance.get_absolute_url }}" class="btn btn-danger">Details</a>
+            <div class="ml-auto">
+                {% include 'product/snippets/cart_update.html' with product=instance cart=cart %}
+            </div>
+        </div>
+        <!--<h6 class="mt-3">{{ instance.posted_on|timesince }}</h6>-->
+    </div>
+</div>

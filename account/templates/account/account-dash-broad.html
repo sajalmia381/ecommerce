@@ -1,0 +1,90 @@
+{% extends 'base-site.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block css %}{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 text-center mb-5">
+                <h2>{{ request.user|upper }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-3">Support</h4>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">About</a>
+                            <a href="#" class="list-group-item">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-3">Billing</h4>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Address</a>
+                            <a href="#" class="list-group-item">Payment Method</a>
+                            <a href="#" class="list-group-item">Orders</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-3">Personal Information</h4>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Name</a>
+                            <a href="#" class="list-group-item">Email</a>
+                            <a href="#" class="list-group-item">Password Reset</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-3">History</h4>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Product Viewed</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-3">Notification</h4>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Email Notification</a>
+                            <a href="#" class="list-group-item">Transactional Email</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base-site.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block css %}
+<style>
+    .inner-search .input-group{width:100%}
+</style>
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+<section class="inner-search mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                {% include 'snippets/search_form.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+        {% for product in object_list %}
+            <div class="col-12 col-md-3">
+                {% include 'product/snippets/card.html' with instance=product cart=cart%}
+
+                {% if forloop.counter|divisibleby:4 %}
+                </div></div><div class="row mt-5">
+                {% else %}
+                </div>
+                {% endif %}
+        {% endfor  %}
+
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}{% endblock %}

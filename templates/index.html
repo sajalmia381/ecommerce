@@ -1,0 +1,47 @@
+{% extends 'base-site.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block css %}
+<style>
+    .img-fluid{width:100%;}
+</style>
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h3>{{ heading|title }}</h3>
+            </div>
+            <div class="col-12">
+                <img src="{% static 'assets/images/sliders/02.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+        {% for product in object_list %}
+            <div class="col-12 col-md-3">
+                <!--{{ forloop.counter }}-->
+                {% include 'product/snippets/card.html' with instance=product %}
+
+                {% if forloop.counter|divisibleby:4 %}
+                </div></div><div class="row mt-5">
+                {% else %}
+                </div>
+                {% endif %}
+        {% endfor  %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}{% endblock %}
