@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '#=nz!4!@m(@6frolhw+b8*8y6mvnndg^^%z=nz3lz*yem-t&xu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 EMAIL_HOST = 'smtp.gmail.com'  # For GMail Only
 EMAIL_HOST_USER = 'sajaluser381@gmail.com'
@@ -31,14 +31,14 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'eCommerce <sajaluser381@gmail.com>'
-BASE_URL = '.herokuapp.com'
+BASE_URL = '.heroku.com'
 
 MANAGERS = (
     ('MD. SAJAL MIA', 'sajaluser381@gmail.com')
 )
 ADMINS = MANAGERS
 
-ALLOWED_HOSTS = [".herokuapp.com"]
+ALLOWED_HOSTS = [".heroku.com"]
 
 
 # Application definition
