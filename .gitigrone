@@ -4,6 +4,9 @@
 ## Template ##
 
 
+## for development
+ecommerce/settings/local
+
 ### Django ###
 *.log
 *.pot

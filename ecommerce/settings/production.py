@@ -38,7 +38,7 @@ MANAGERS = (
 )
 ADMINS = MANAGERS
 
-ALLOWED_HOSTS = [".heroku.com"]
+ALLOWED_HOSTS = [".herokuapp.com"]
 
 
 # Application definition
