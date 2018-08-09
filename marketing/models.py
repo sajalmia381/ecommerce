@@ -27,7 +27,7 @@ post_save.connect(marking_pre_update_reciver, sender=MarketingPreference)
 
 def make_marketing_pre_reciver(sender, instance, created, *args, **kwargs):
     if created:
-        MarketingPreference.object.get_or_create(user=instance)
+        MarketingPreference.objects.get_or_create(user=instance)
 
 
 post_save.connect(make_marketing_pre_reciver, sender=settings.AUTH_USER_MODEL)
