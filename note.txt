@@ -15,6 +15,7 @@
   - https://kirr.co/8mjnna
   - https://kirr.co/vklau5 [ ssl\tls ]
   - https://kirr.co/moo1b0 [ .gitignore ]
+  - https://kirr.co/4h4c77 [ Amazon static file]
 5. Heroku Deploy
   - https://kirr.co/fmj5xx
 6. Password Reset
