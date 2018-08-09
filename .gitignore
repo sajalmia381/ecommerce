@@ -5,7 +5,7 @@
 
 
 ## for development
-ecommerce/settings/local
+ecommerce/settings/local.py
 
 ### Django ###
 *.log
