@@ -49,7 +49,7 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser):
     # username = models.CharField(max_length=100)
-    full_name = models.CharField(max_length=50)
+    full_name = models.CharField(max_length=50, blank=True)
     email = models.EmailField(max_length=250, unique=True)
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
