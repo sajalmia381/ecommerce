@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import LoginView, RegistrationView, guest_view, AccountDashBroad
+from .views import LoginView, RegistrationView, guest_view, AccountDashBroad, activate
 
 app_name = 'account'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('registration/', RegistrationView.as_view(), name='registration'),
     path('registration/guest', guest_view, name='registration-guest'),
     path('dashbroad/', AccountDashBroad.as_view(), name='account-dashbroad'),
+    path('activate/<uidb64>/<token>/', activate, name='activate'),
 ]
