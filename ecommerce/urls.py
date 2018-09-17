@@ -29,11 +29,10 @@ urlpatterns = [
     path('search', include('search.urls', namespace='search')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('address/', include('address.urls', namespace='address')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, documnet_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     import debug_toolbar
     urlpatterns += [
