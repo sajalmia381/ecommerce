@@ -19,8 +19,8 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Name</th>
-                      <th scope="col">Price</th>
                       <th scope="col">Remove</th>
+                      <th scope="col">Price</th>
                     </tr>
                   </thead>
                   <tbody class='cart-body'>
@@ -28,30 +28,30 @@
                     <tr class="cart-products">
                         <td scope="row">{{ forloop.counter}}</td>
                         <td><a href="{{ product.get_absolute_url }}">{{ product.name|title }}</a></td>
-                        <td>{{ product.price }}</td>
                         <td>{% include 'product/snippets/cart-remove.html' with product_id=product.id %}</td>
+                        <td>{{ product.price }}</td>
                     </tr>
                   {% endfor %}
                   <tr>
                       <td class="colspan-2"></td>
                       <td><b>Sub Total:</b></td>
+                      <td class="colspan"></td>
                       <td><b>$</b><b class="cart-sub-total">{{ cart.sub_total }}</b></td>
                   </tr>
                   <tr>
                       <td class="colspan-2"></td>
                       <td><b>Total:</b></td>
+                      <td class="colspan"></td>
                       <td><b>$</b><b class="cart-total">{{ cart.total }}</b></td>
                   </tr>
                   <tr>
+                      <td class="colspan"></td>
                       <td class="colspan"></td>
                       <td class="colspan"></td>
                       <td><a class="btn btn-success" href="{% url 'cart:checkout' %}">Checkout</a></td>
                   </tr>
                   </tbody>
                 </table>
-                <div class="cart-remove-hidden-form">
-                    {% include 'product/snippets/cart-remove.html' %}
-                </div>
                 {% else %}
                 <h2>Product Not in cart list</h2>
                 {% endif%}
