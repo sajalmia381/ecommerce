@@ -29,10 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # EMAIL_HOST = 'smtp.sendgrid.net' # for other Mail
-# EMAIL_HOST_USER = 'yourusername@youremail.com' # for other mail
 EMAIL_HOST = 'smtp.gmail.com'  # For GMail Only
 EMAIL_HOST_USER = 'sajaluser381@gmail.com'
-EMAIL_HOST_PASSWORD = 'P@ssword12345'
+EMAIL_HOST_PASSWORD = 'Hidden'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'eCommerce <sajaluser381@gmail.com>'
@@ -77,9 +76,9 @@ LOGOUT_URL = '/logout/'
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
 
-MAILCHIMP_API_KEY = "09a0da2d6f1660106306a33c59b619c9-us18"
+MAILCHIMP_API_KEY = os.environ.get("Hidden in Heroku")
 MAILCHIMP_DATA_CENTER = "us18"
-MAILCHIMP_EMAIL_LIST_ID = "abaee9c51c"
+MAILCHIMP_EMAIL_LIST_ID = "Hidden in Heroku"
 
 
 MIDDLEWARE = [
@@ -188,9 +187,3 @@ CSRF_COOKIE_SECURE = False
 SECURE_HSTS_SECONDS = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_FRAME_DENY = False
-
-
-AWS_USERNAME = "ecommerce_user"
-AWS_GROUP_NAME = "ecommerce_group"
-AWS_ACCESS_KEY_ID = "AKIAJZPBHD5L5XXTQWRQ"
-AWS_SECRET_ACCESS_KEY = "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"
