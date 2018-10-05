@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import ListView, FormView, View, CreateView
 from django.urls import reverse, reverse_lazy
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from django.conf import settings
 
 from product.models import Product
@@ -31,6 +32,26 @@ class ContactView(CreateView):
     template_name = 'contact/contact.html'
     form_class = ContactForm
     success_url = reverse_lazy('pages:contact')
+
+    def form_valid(self, form):
+        subject = "Confirm Submit Mail"
+        from_email = settings.EMAIL_HOST_USER
+        message = 'Message: Thanks you. We reply very soon! :)'
+        recipient_list = [
+            form.cleaned_data['email']
+        ]
+        if subject and message and from_email:
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return super().form_valid(form)
+        else:
+            # In reality we'd use a form class
+            # to get proper validation errors.
+            return HttpResponse('Make sure all fields are entered and valid.')
+
+
 
 
 # class ContactView(FormView):
