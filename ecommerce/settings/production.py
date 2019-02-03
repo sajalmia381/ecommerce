@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#=nz!4!@m(@6frolhw+b8*8y6mvnndg^^%z=nz3lz*yem-t&xu'
+# SECRET_KEY = '#=nz!4!@m(@6frolhw+b8*8y6mvnndg^^%z=nz3lz*yem-t&xu'
 SECRET_KEY = os.environ.get('SECRET_KEY', '#=nz!4!@m(@6frolhw+b8*8y6mvnndg^^%z=nz3lz*yem-t&xu')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'storages',
 ]
 
 AUTH_USER_MODEL = 'account.CustomUser'  # change the Build in models to custom User Model
@@ -182,6 +184,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+from ecommerce.aws.conf import *
 
 # let's encrypt SSL/TLS
 
