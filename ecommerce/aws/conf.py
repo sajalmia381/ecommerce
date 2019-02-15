@@ -1,9 +1,9 @@
 import datetime
-
+import os
 AWS_USERNAME = 'ptl_ecommerce'
 AWS_GROUP_NAME = 'ptl_ecommerce_group'
-AWS_ACCESS_KEY_ID = "AKIAI6RZNXJJ7XW7J42A"
-AWS_SECRET_ACCESS_KEY = "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"
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
 AWS_FILE_EXPIRE = 200
 AWS_PRELOAD_METADATA = True
 AWS_QUERYSTRING_AUTH = True
